@@ -29,7 +29,7 @@
 #include "magisk_loader.h"
 #include "symbol_cache.h"
 
-namespace lspd {
+namespace sonypd {
     int allow_unload = 0;
     int *allowUnload = &allow_unload;
 
@@ -73,6 +73,6 @@ namespace lspd {
             if (*allowUnload) api_->setOption(zygisk::DLCLOSE_MODULE_LIBRARY);
         }
     };
-} //namespace lspd
+} //namespace sonypd
 
-REGISTER_ZYGISK_MODULE(lspd::ZygiskModule);
+REGISTER_ZYGISK_MODULE(sonypd::ZygiskModule);

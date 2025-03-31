@@ -28,9 +28,9 @@ plugins {
     alias(libs.plugins.lsplugin.resopt)
 }
 
-val moduleName = "LSPosed"
-val moduleBaseId = "lsposed"
-val authors = "LSPosed Developers & Irena"
+val moduleName = "SonyPosed"
+val moduleBaseId = "sonyposed"
+val authors = "SonyPosed Developers & Irena"
 
 val injectedPackageName: String by rootProject.extra
 val injectedPackageUid: Int by rootProject.extra
@@ -48,7 +48,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "org.lsposed.lspd"
+        applicationId = "org.sonyposed.sonypd"
         multiDexEnabled = false
 
         buildConfigField(
@@ -58,6 +58,7 @@ android {
         )
         buildConfigField("String", "MANAGER_INJECTED_PKG_NAME", """"$injectedPackageName"""")
         buildConfigField("int", "MANAGER_INJECTED_UID", """$injectedPackageUid""")
+
     }
 
     buildTypes {
@@ -92,7 +93,7 @@ android {
             }
         }
     }
-    namespace = "org.lsposed.lspd"
+    namespace = "org.sonyposed.sonypd"
 }
 abstract class Injected @Inject constructor(val magiskDir: String) {
     @get:Inject
@@ -110,7 +111,7 @@ dependencies {
 }
 
 val zipAll = task("zipAll") {
-    group = "LSPosed"
+    group = "SonyPosed"
 }
 
 fun afterEval() = android.applicationVariants.forEach { variant ->
@@ -126,7 +127,7 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
     val zipFileName = "$moduleName-v$verName-$verCode-Irena-$buildTypeLowered.zip"
 
     val prepareMagiskFilesTask = task<Sync>("prepareMagiskFiles$variantCapped") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(
             "assemble$variantCapped",
             ":app:package$buildTypeCapped",
@@ -168,7 +169,7 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
         }
         into("lib") {
             from(layout.buildDirectory.dir("intermediates/stripped_native_libs/$variantCapped/strip${variantCapped}DebugSymbols/out/lib")) {
-                include("**/liblspd.so")
+                include("**/libsonypd.so")
             }
         }
         into("bin") {
@@ -182,7 +183,7 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
             layout.buildDirectory.dir("intermediates/dex/$variantCapped/mergeDex$variantCapped")
         into("framework") {
             from(dexOutPath)
-            rename("classes.dex", "lspd.dex")
+            rename("classes.dex", "sonypd.dex")
         }
 
         val injected = objects.newInstance<Injected>(magiskDir.get().asFile.path)
@@ -199,7 +200,7 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
     }
 
     val zipTask = task<Zip>("zip${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(prepareMagiskFilesTask)
         archiveFileName = zipFileName
         destinationDirectory = file("$projectDir/release")
@@ -210,13 +211,13 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
 
     val adb: String = androidComponents.sdkComponents.adb.get().asFile.absolutePath
     val pushTask = task<Exec>("push${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(zipTask)
         workingDir("${projectDir}/release")
         commandLine(adb, "push", zipFileName, "/data/local/tmp/")
     }
     val flashMagiskTask = task<Exec>("flashMagisk${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(pushTask)
         commandLine(
             adb, "shell", "su", "-c",
@@ -224,12 +225,12 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
         )
     }
     task<Exec>("flashMagiskAndReboot${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(flashMagiskTask)
         commandLine(adb, "shell", "su", "-c", "/system/bin/svc", "power", "reboot")
     }
     val flashKsuTask = task<Exec>("flashKsu${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(pushTask)
         commandLine(
             adb, "shell", "su", "-c",
@@ -237,7 +238,7 @@ fun afterEval() = android.applicationVariants.forEach { variant ->
         )
     }
     task<Exec>("flashKsuAndReboot${variantCapped}") {
-        group = "LSPosed"
+        group = "SonyPosed"
         dependsOn(flashKsuTask)
         commandLine(adb, "shell", "su", "-c", "/system/bin/svc", "power", "reboot")
     }
@@ -249,18 +250,18 @@ afterEvaluate {
 
 val adb: String = androidComponents.sdkComponents.adb.get().asFile.absolutePath
 val killLspd = task<Exec>("killLspd") {
-    group = "LSPosed"
-    commandLine(adb, "shell", "su", "-c", "killall", "lspd")
+    group = "SonyPosed"
+    commandLine(adb, "shell", "su", "-c", "killall", "sonypd")
     isIgnoreExitValue = true
 }
 val pushDaemon = task<Exec>("pushDaemon") {
-    group = "LSPosed"
+    group = "SonyPosed"
     dependsOn(":daemon:assembleDebug")
     workingDir(project(":daemon").layout.buildDirectory.dir("outputs/apk/debug"))
     commandLine(adb, "push", "daemon-debug.apk", "/data/local/tmp/daemon.apk")
 }
 val pushDaemonNative = task<Exec>("pushDaemonNative") {
-    group = "LSPosed"
+    group = "SonyPosed"
     dependsOn(":daemon:assembleDebug")
     doFirst {
         val abi: String = ByteArrayOutputStream().use { outputStream ->
@@ -275,7 +276,7 @@ val pushDaemonNative = task<Exec>("pushDaemonNative") {
     commandLine(adb, "push", "libdaemon.so", "/data/local/tmp/libdaemon.so")
 }
 val reRunDaemon = task<Exec>("reRunDaemon") {
-    group = "LSPosed"
+    group = "SonyPosed"
     dependsOn(pushDaemon, pushDaemonNative, killLspd)
     // tricky to pass a minus number to avoid the injection warning
     commandLine(
@@ -286,7 +287,7 @@ val reRunDaemon = task<Exec>("reRunDaemon") {
 }
 val tmpApk = "/data/local/tmp/manager.apk"
 val pushApk = task<Exec>("pushApk") {
-    group = "LSPosed"
+    group = "SonyPosed"
     dependsOn(":app:assembleDebug")
     doFirst {
         project.providers.exec {
@@ -297,15 +298,15 @@ val pushApk = task<Exec>("pushApk") {
     commandLine(adb, "push", "app-debug.apk", tmpApk)
 }
 val openApp = task<Exec>("openApp") {
-    group = "LSPosed"
+    group = "SonyPosed"
     commandLine(
         adb, "shell",
-        "am", "start", "-c", "org.lsposed.manager.LAUNCH_MANAGER",
+        "am", "start", "-c", "org.sonyposed.manager.LAUNCH_MANAGER",
         "com.android.shell/.BugreportWarningActivity"
     )
 }
 task("reRunApp") {
-    group = "LSPosed"
+    group = "SonyPosed"
     dependsOn(pushApk)
     finalizedBy(reRunDaemon)
 }

@@ -25,10 +25,10 @@ import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.util.Log;
 
-import org.lsposed.lspd.impl.LSPosedBridge;
-import org.lsposed.lspd.impl.LSPosedHookCallback;
-import org.lsposed.lspd.nativebridge.HookBridge;
-import org.lsposed.lspd.nativebridge.ResourcesHook;
+import org.sonyposed.sonypd.impl.LSPosedBridge;
+import org.sonyposed.sonypd.impl.LSPosedHookCallback;
+import org.sonyposed.sonypd.nativebridge.HookBridge;
+import org.sonyposed.sonypd.nativebridge.ResourcesHook;
 
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Executable;
@@ -62,7 +62,7 @@ public final class XposedBridge {
     /**
      * @hide
      */
-    public static final String TAG = "LSPosed-Bridge";
+    public static final String TAG = "SonyPosed-Bridge";
 
     /**
      * @deprecated Use {@link #getXposedVersion()} instead.

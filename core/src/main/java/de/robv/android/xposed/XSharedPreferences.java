@@ -20,7 +20,7 @@
 
 package de.robv.android.xposed;
 
-import static org.lsposed.lspd.core.ApplicationServiceClient.serviceClient;
+import static org.sonyposed.sonypd.core.ApplicationServiceClient.serviceClient;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -31,8 +31,8 @@ import android.util.Log;
 
 import com.android.internal.util.XmlUtils;
 
-import org.lsposed.lspd.core.BuildConfig;
-import org.lsposed.lspd.util.MetaDataReader;
+import org.sonyposed.sonypd.core.BuildConfig;
+import org.sonyposed.sonypd.util.MetaDataReader;
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.File;

@@ -29,7 +29,7 @@
 
 extern "C"
 JNIEXPORT void JNICALL
-Java_org_lsposed_lspd_service_Dex2OatService_doMountNative(JNIEnv *env, jobject,
+Java_org_sonyposed_sonypd_service_Dex2OatService_doMountNative(JNIEnv *env, jobject,
                                                            jboolean enabled,
                                                            jstring r32, jstring d32,
                                                            jstring r64, jstring d64) {
@@ -104,7 +104,7 @@ static int setsockcreatecon_raw(const char *context) {
 
 extern "C"
 JNIEXPORT jboolean JNICALL
-Java_org_lsposed_lspd_service_Dex2OatService_setSockCreateContext(JNIEnv *env, jclass,
+Java_org_sonyposed_sonypd_service_Dex2OatService_setSockCreateContext(JNIEnv *env, jclass,
                                                                   jstring contextStr) {
     const char *context = env->GetStringUTFChars(contextStr, nullptr);
     int ret = setsockcreatecon_raw(context);
@@ -114,6 +114,6 @@ Java_org_lsposed_lspd_service_Dex2OatService_setSockCreateContext(JNIEnv *env, j
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_org_lsposed_lspd_service_Dex2OatService_getSockPath(JNIEnv *env, jobject) {
+Java_org_sonyposed_sonypd_service_Dex2OatService_getSockPath(JNIEnv *env, jobject) {
     return env->NewStringUTF("5291374ceda0aef7c5d86cd2a4f6a3ac\0");
 }

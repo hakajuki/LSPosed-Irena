@@ -20,7 +20,7 @@
 
 #include <map>
 
-namespace lspd {
+namespace sonypd {
     using obfuscation_map_t = std::map<std::string, std::string>;
 
     class ConfigBridge {

@@ -31,7 +31,7 @@ namespace SandHook {
     class ElfImg;
 }
 
-namespace lspd {
+namespace sonypd {
     std::unique_ptr<const SandHook::ElfImg> &GetArt(bool release=false);
     std::unique_ptr<const SandHook::ElfImg> &GetLibBinder(bool release=false);
 }

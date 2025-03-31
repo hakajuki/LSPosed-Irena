@@ -45,7 +45,8 @@ cmaker {
         )
         cFlags.addAll(flags)
         cppFlags.addAll(flags)
-        abiFilters("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+//        abiFilters("arm64-v8a", "armeabi-v7a", "x86", "x86_64")
+        abiFilters("arm64-v8a")
     }
     buildTypes {
         if (it.name == "release") {
@@ -63,7 +64,7 @@ val latestTag = repo?.latestTag?.removePrefix("v")?.substringBefore("-") ?: "1.9
 val injectedPackageName by extra("com.android.shell")
 val injectedPackageUid by extra(2000)
 
-val defaultManagerPackageName by extra("org.lsposed.manager")
+val defaultManagerPackageName by extra("org.sonyposed.manager")
 val verCode by extra(commitCount)
 val verName by extra(latestTag)
 val androidTargetSdkVersion by extra(35)

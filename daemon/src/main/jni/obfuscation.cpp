@@ -44,9 +44,9 @@ std::map<const std::string, std::string> signatures = {
         { "Landroid/app/AndroidApp", ""},
         { "Landroid/content/res/XRes", ""},
         { "Landroid/content/res/XModule", ""},
-        { "Lorg/lsposed/lspd/core/", ""},
-        { "Lorg/lsposed/lspd/nativebridge/", ""},
-        { "Lorg/lsposed/lspd/service/", ""},
+        { "Lorg/sonyposed/sonypd/core/", ""},
+        { "Lorg/sonyposed/sonypd/nativebridge/", ""},
+        { "Lorg/sonyposed/sonypd/service/", ""},
 };
 
 jclass class_file_descriptor;
@@ -147,7 +147,7 @@ jobject stringMapToJavaHashMap(JNIEnv *env, const decltype(signatures)& map) {
 
 extern "C"
 JNIEXPORT jobject JNICALL
-Java_org_lsposed_lspd_service_ObfuscationManager_getSignatures(JNIEnv *env, [[maybe_unused]] jclass obfuscation_manager) {
+Java_org_sonyposed_sonypd_service_ObfuscationManager_getSignatures(JNIEnv *env, [[maybe_unused]] jclass obfuscation_manager) {
     maybeInit(env);
     static jobject signatures_jni = nullptr;
     if (signatures_jni) return signatures_jni;
@@ -186,7 +186,7 @@ static int obfuscateDex(const void *dex, size_t size) {
 
 extern "C"
 JNIEXPORT jobject
-Java_org_lsposed_lspd_service_ObfuscationManager_obfuscateDex(JNIEnv *env, [[maybe_unused]] jclass obfuscation_manager,
+Java_org_sonyposed_sonypd_service_ObfuscationManager_obfuscateDex(JNIEnv *env, [[maybe_unused]] jclass obfuscation_manager,
                                                        jobject memory) {
     maybeInit(env);
     int fd = ASharedMemory_dupFromJava(env, memory);

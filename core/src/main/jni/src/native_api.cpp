@@ -51,7 +51,7 @@
 
 using lsplant::operator""_sym;
 
-namespace lspd {
+namespace sonypd {
 
     using lsplant::Hooker;
     std::list<NativeOnModuleLoaded> moduleLoadedCallbacks;

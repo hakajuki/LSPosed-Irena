@@ -22,7 +22,7 @@
 
 #include "jni.h"
 
-namespace lspd {
+namespace sonypd {
     void RegisterResourcesHook(JNIEnv *);
 
-} // namespace lspd
+} // namespace sonypd

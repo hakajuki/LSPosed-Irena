@@ -34,7 +34,7 @@
         app:borderTopDrawable="@null"
         app:borderTopVisibility="whenTop">
 
-        <org.lsposed.manager.ui.widget.ScrollWebView
+        <org.sonyposed.manager.ui.widget.ScrollWebView
             android:id="@+id/readme"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

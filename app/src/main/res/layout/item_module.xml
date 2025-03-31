@@ -61,7 +61,7 @@
             app:layout_constraintStart_toEndOf="@id/app_icon"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_max="wrap"
-            tools:text="LSPosed Manager" />
+            tools:text="SonyPosed Manager" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/app_Package_Name"
@@ -99,7 +99,7 @@
             app:layout_constraintWidth_max="wrap"
             tools:text="Version :1.8.1" />
 
-        <org.lsposed.manager.ui.widget.ExpandableTextView
+        <org.sonyposed.manager.ui.widget.ExpandableTextView
             android:id="@+id/description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

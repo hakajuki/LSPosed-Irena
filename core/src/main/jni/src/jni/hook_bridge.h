@@ -20,6 +20,6 @@
 
 #include <jni.h>
 
-namespace lspd {
+namespace sonypd {
     void RegisterHookBridge(JNIEnv *env);
 }

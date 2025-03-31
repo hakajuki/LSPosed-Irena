@@ -25,7 +25,7 @@
 
 #include "context.h"
 
-namespace lspd {
+namespace sonypd {
     class MagiskLoader : public Context {
     public:
         inline static void Init() {
@@ -55,4 +55,4 @@ namespace lspd {
 
         static void setAllowUnload(bool unload);
     };
-} // namespace lspd
+} // namespace sonypd

@@ -28,7 +28,7 @@
 
 using namespace lsplant;
 
-namespace lspd {
+namespace sonypd {
     LSP_DEF_NATIVE_METHOD(void, NativeAPI, recordNativeEntrypoint, jstring jstr) {
         lsplant::JUTFString str(env, jstr);
         RegisterNativeLib(str);

@@ -80,12 +80,12 @@
         android:orientation="vertical"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-        <org.lsposed.manager.ui.widget.MaterialSwipeRefreshLayout
+        <org.sonyposed.manager.ui.widget.MaterialSwipeRefreshLayout
             android:id="@+id/swipe_refresh_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <org.lsposed.manager.ui.widget.EmptyStateRecyclerView
+            <org.sonyposed.manager.ui.widget.EmptyStateRecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -97,6 +97,6 @@
                 app:borderTopDrawable="@null"
                 app:borderTopVisibility="whenTop"
                 app:fitsSystemWindowsInsets="@integer/internal_fragment_bottom_insets" />
-        </org.lsposed.manager.ui.widget.MaterialSwipeRefreshLayout>
+        </org.sonyposed.manager.ui.widget.MaterialSwipeRefreshLayout>
     </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

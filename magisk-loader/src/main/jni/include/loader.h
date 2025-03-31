@@ -25,7 +25,7 @@
 
 #include "config.h"
 
-namespace lspd {
+namespace sonypd {
     extern const int apiVersion;
     extern const char* const moduleName;
 }

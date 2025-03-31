@@ -220,17 +220,17 @@ void Logcat::ProcessBuffer(struct log_msg *buf) {
 
     std::string_view tag(entry.tag, entry.tagLen);
     bool shortcut = false;
-    if (tag == "LSPosed-Bridge"sv || tag == "XSharedPreferences"sv || tag == "LSPosedContext") [[unlikely]] {
+    if (tag == "SonyPosed-Bridge"sv || tag == "XSharedPreferences"sv || tag == "SonyPosedContext") [[unlikely]] {
         modules_print_count_ += PrintLogLine(entry, modules_file_.get());
         shortcut = true;
     }
     if (verbose_ && (shortcut || buf->id() == log_id::LOG_ID_CRASH ||
                      entry.pid == my_pid_ || tag == "Magisk"sv || tag == "Dobby"sv ||
                      tag.starts_with("Riru"sv) || tag.starts_with("zygisk"sv) ||
-                     tag == "LSPlant"sv || tag.starts_with("LSPosed"sv))) [[unlikely]] {
+                     tag == "SonyPlant"sv || tag.starts_with("SonyPosed"sv))) [[unlikely]] {
         verbose_print_count_ += PrintLogLine(entry, verbose_file_.get());
     }
-    if (entry.pid == my_pid_ && tag == "LSPosedLogcat"sv) [[unlikely]] {
+    if (entry.pid == my_pid_ && tag == "SonyPosedLogcat"sv) [[unlikely]] {
         std::string_view msg(entry.message, entry.messageLen);
         if (msg == "!!start_verbose!!"sv) {
             verbose_ = true;
@@ -336,7 +336,7 @@ void Logcat::Run() {
 extern "C"
 JNIEXPORT void JNICALL
 // NOLINTNEXTLINE
-Java_org_lsposed_lspd_service_LogcatService_runLogcat(JNIEnv *env, jobject thiz) {
+Java_org_sonyposed_sonypd_service_LogcatService_runLogcat(JNIEnv *env, jobject thiz) {
     jclass clazz = env->GetObjectClass(thiz);
     jmethodID method = env->GetMethodID(clazz, "refreshFd", "(Z)I");
     Logcat logcat(env, thiz, method);

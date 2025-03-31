@@ -22,7 +22,7 @@ package de.robv.android.xposed.callbacks;
 
 import android.os.Bundle;
 
-import org.lsposed.lspd.deopt.PrebuiltMethodsDeopter;
+import org.sonyposed.sonypd.deopt.PrebuiltMethodsDeopter;
 
 import java.io.Serializable;
 

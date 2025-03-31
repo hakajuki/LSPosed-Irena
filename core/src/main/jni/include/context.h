@@ -30,7 +30,7 @@
 #include "utils.h"
 #include "utils/jni_helper.hpp"
 
-namespace lspd {
+namespace sonypd {
     class Context {
 
     public:

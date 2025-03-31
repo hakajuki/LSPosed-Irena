@@ -71,7 +71,7 @@ jfieldID before_method_field = nullptr;
 jfieldID after_method_field = nullptr;
 }
 
-namespace lspd {
+namespace sonypd {
 LSP_DEF_NATIVE_METHOD(jboolean, HookBridge, hookMethod, jboolean useModernApi, jobject hookMethod,
                       jclass hooker, jint priority, jobject callback) {
     bool newHook = false;
@@ -347,4 +347,4 @@ void RegisterHookBridge(JNIEnv *env) {
     env->DeleteLocalRef(method);
     REGISTER_LSP_NATIVE_METHODS(HookBridge);
 }
-} // namespace lspd
+} // namespace sonypd

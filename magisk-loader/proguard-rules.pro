@@ -1,10 +1,10 @@
--keepclasseswithmembers class org.lsposed.lspd.core.Main {
+-keepclasseswithmembers class org.sonyposed.sonypd.core.Main {
     public static void forkCommon(boolean, java.lang.String, java.lang.String, android.os.IBinder);
 }
 -keepclasseswithmembers,includedescriptorclasses class * {
     native <methods>;
 }
--keepclasseswithmembers class org.lsposed.lspd.service.BridgeService {
+-keepclasseswithmembers class org.sonyposed.sonypd.service.BridgeService {
     public static boolean *(android.os.IBinder, int, long, long, int);
 }
 
@@ -15,5 +15,5 @@
 -repackageclasses
 -allowaccessmodification
 -dontwarn org.slf4j.impl.StaticLoggerBinder
--dontwarn org.lsposed.lspd.core.*
--dontwarn org.lsposed.lspd.util.Hookers
+-dontwarn org.sonyposed.sonypd.core.*
+-dontwarn org.sonyposed.sonypd.util.Hookers

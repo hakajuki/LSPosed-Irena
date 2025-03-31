@@ -1,14 +1,14 @@
 -keep class android.** { *; }
 -keep class de.robv.android.xposed.** {*;}
 -keep class io.github.libxposed.** {*;}
--keep class org.lsposed.lspd.core.* {*;}
--keep class org.lsposed.lspd.hooker.HandleSystemServerProcessHooker {*;}
--keep class org.lsposed.lspd.hooker.HandleSystemServerProcessHooker$Callback {*;}
--keep class org.lsposed.lspd.impl.LSPosedBridge$NativeHooker {*;}
--keep class org.lsposed.lspd.impl.LSPosedBridge$HookerCallback {*;}
--keep class org.lsposed.lspd.util.Hookers {*;}
+-keep class org.sonyposed.sonypd.core.* {*;}
+-keep class org.sonyposed.sonypd.hooker.HandleSystemServerProcessHooker {*;}
+-keep class org.sonyposed.sonypd.hooker.HandleSystemServerProcessHooker$Callback {*;}
+-keep class org.sonyposed.sonypd.impl.LSPosedBridge$NativeHooker {*;}
+-keep class org.sonyposed.sonypd.impl.LSPosedBridge$HookerCallback {*;}
+-keep class org.sonyposed.sonypd.util.Hookers {*;}
 
--keepnames class org.lsposed.lspd.impl.LSPosedHelper {
+-keepnames class org.sonyposed.sonypd.impl.LSPosedHelper {
     public <methods>;
 }
 
@@ -16,10 +16,10 @@
 -keepclasseswithmembers,includedescriptorclasses class * {
     native <methods>;
 }
--keepclassmembers class org.lsposed.lspd.impl.LSPosedContext {
+-keepclassmembers class org.sonyposed.sonypd.impl.LSPosedContext {
     public <methods>;
 }
--keepclassmembers class org.lsposed.lspd.impl.LSPosedHookCallback {
+-keepclassmembers class org.sonyposed.sonypd.impl.LSPosedHookCallback {
     public <methods>;
 }
 -keep,allowoptimization,allowobfuscation @io.github.libxposed.api.annotations.* class * {

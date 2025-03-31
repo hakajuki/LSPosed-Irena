@@ -210,7 +210,7 @@ namespace {
     }
 }
 
-namespace lspd {
+namespace sonypd {
     LSP_DEF_NATIVE_METHOD(jobject, DexParserBridge, openDex, jobject data, jlongArray args) {
         auto dex_size = env->GetDirectBufferCapacity(data);
         if (dex_size == -1) {

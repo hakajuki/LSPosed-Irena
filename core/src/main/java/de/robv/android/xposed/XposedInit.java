@@ -20,8 +20,8 @@
 
 package de.robv.android.xposed;
 
-import static org.lsposed.lspd.core.ApplicationServiceClient.serviceClient;
-import static org.lsposed.lspd.deopt.PrebuiltMethodsDeopter.deoptResourceMethods;
+import static org.sonyposed.sonypd.core.ApplicationServiceClient.serviceClient;
+import static org.sonyposed.sonypd.deopt.PrebuiltMethodsDeopter.deoptResourceMethods;
 import static de.robv.android.xposed.XposedBridge.hookAllMethods;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findAndHookMethod;
@@ -41,11 +41,11 @@ import android.os.Process;
 import android.util.ArrayMap;
 import android.util.Log;
 
-import org.lsposed.lspd.impl.LSPosedContext;
-import org.lsposed.lspd.models.PreLoadedApk;
-import org.lsposed.lspd.nativebridge.NativeAPI;
-import org.lsposed.lspd.nativebridge.ResourcesHook;
-import org.lsposed.lspd.util.LspModuleClassLoader;
+import org.sonyposed.sonypd.impl.LSPosedContext;
+import org.sonyposed.sonypd.models.PreLoadedApk;
+import org.sonyposed.sonypd.nativebridge.NativeAPI;
+import org.sonyposed.sonypd.nativebridge.ResourcesHook;
+import org.sonyposed.sonypd.util.LspModuleClassLoader;
 
 import java.io.File;
 import java.lang.ref.WeakReference;

@@ -35,7 +35,7 @@ using namespace lsplant;
 
 static_assert(FS_IOC_SETFLAGS == LP_SELECT(0x40046602, 0x40086602));
 
-namespace lspd {
+namespace sonypd {
     extern int *allowUnload;
     jboolean is_parasitic_manager = JNI_FALSE;
 
@@ -76,7 +76,7 @@ namespace lspd {
 
     std::string GetEntryClassName() {
         const auto &obfs_map = ConfigBridge::GetInstance()->obfuscation_map();
-        static auto signature = obfs_map.at("org.lsposed.lspd.core.") + "Main";
+        static auto signature = obfs_map.at("org.sonyposed.sonypd.core.") + "Main";
         return signature;
     }
 
@@ -150,7 +150,7 @@ namespace lspd {
         jboolean is_manager = JNI_FALSE;
         if (uid == kAidInjected) {
             const JUTFString name(env, nice_name);
-            if (name.get() == "org.lsposed.manager"sv) {
+            if (name.get() == "org.sonyposed.manager"sv) {
                 int array_size = gids ? env->GetArrayLength(gids) : 0;
                 auto region = std::make_unique<jint[]>(array_size + 1);
                 auto *new_gids = env->NewIntArray(array_size + 1);
@@ -191,7 +191,7 @@ namespace lspd {
     MagiskLoader::OnNativeForkAndSpecializePost(JNIEnv *env, jstring nice_name, jstring app_dir) {
         const JUTFString process_name(env, nice_name);
         auto *instance = Service::instance();
-        if (is_parasitic_manager) nice_name = JNI_NewStringUTF(env, "org.lsposed.manager").release();
+        if (is_parasitic_manager) nice_name = JNI_NewStringUTF(env, "org.sonyposed.manager").release();
         auto binder = skip_ ? ScopedLocalRef<jobject>{env, nullptr}
                             : instance->RequestBinder(env, nice_name);
         if (binder) {
@@ -239,4 +239,4 @@ namespace lspd {
             *allowUnload = unload ? 1 : 0;
         }
     }
-}  // namespace lspd
+}  // namespace sonypd

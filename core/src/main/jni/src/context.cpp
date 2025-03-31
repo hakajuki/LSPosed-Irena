@@ -32,7 +32,7 @@
 using namespace lsplant;
 
 
-namespace lspd {
+namespace sonypd {
     std::unique_ptr<Context> Context::instance_;
     std::unique_ptr<ConfigBridge> ConfigBridge::instance_;
 
@@ -119,4 +119,4 @@ namespace lspd {
         LOGE("Class {} not found", class_name);
         return {env, nullptr};
     }
-}  // namespace lspd
+}  // namespace sonypd

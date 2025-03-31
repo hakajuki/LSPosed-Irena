@@ -30,7 +30,7 @@
 #include <vector>
 #include <logging.h>
 
-namespace lspd {
+namespace sonypd {
     std::unique_ptr<const SandHook::ElfImg> &GetArt(bool release) {
         static std::unique_ptr<const SandHook::ElfImg> kArtImg = nullptr;
         if (release) {
@@ -50,4 +50,4 @@ namespace lspd {
         }
         return kImg;
     }
-}  // namespace lspd
+}  // namespace sonypd

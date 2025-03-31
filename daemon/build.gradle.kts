@@ -26,7 +26,7 @@ plugins {
     alias(libs.plugins.lsplugin.resopt)
 }
 
-val daemonName = "LSPosed"
+val daemonName = "SonyPosed"
 
 val injectedPackageName: String by rootProject.extra
 val injectedPackageUid: Int by rootProject.extra
@@ -42,7 +42,7 @@ android {
     }
 
     defaultConfig {
-        applicationId = "org.lsposed.daemon"
+        applicationId = "org.sonyposed.daemon"
 
         buildConfigField(
             "String",
@@ -74,7 +74,7 @@ android {
         }
     }
 
-    namespace = "org.lsposed.daemon"
+    namespace = "org.sonyposed.daemon"
 }
 
 android.applicationVariants.all {
@@ -88,7 +88,7 @@ android.applicationVariants.all {
         val sign = rootProject.project(":app").extensions
             .getByType(ApplicationExtension::class.java)
             .buildTypes.named(variantLowered).get().signingConfig
-        val outSrc = file("$outSrcDir/org/lsposed/lspd/util/SignInfo.java")
+        val outSrc = file("$outSrcDir/org/sonyposed/sonypd/util/SignInfo.java")
         outputs.file(outSrc)
         doLast {
             outSrc.parentFile.mkdirs()
@@ -101,7 +101,7 @@ android.applicationVariants.all {
             )
             PrintStream(outSrc).print(
                 """
-                |package org.lsposed.lspd.util;
+                |package org.sonyposed.sonypd.util;
                 |public final class SignInfo {
                 |    public static final byte[] CERTIFICATE = {${
                     certificateInfo.certificate.encoded.joinToString(",")

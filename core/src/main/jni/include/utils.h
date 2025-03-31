@@ -30,7 +30,7 @@
 #include <sys/stat.h>
 #include "logging.h"
 
-namespace lspd {
+namespace sonypd {
     using namespace std::literals::string_literals;
 
     inline int32_t GetAndroidApiLevel() {

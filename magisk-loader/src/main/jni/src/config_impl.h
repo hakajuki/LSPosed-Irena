@@ -22,7 +22,7 @@
 #include "config_bridge.h"
 #include "service.h"
 
-namespace lspd {
+namespace sonypd {
     class ConfigImpl : public ConfigBridge {
     public:
         inline static void Init() {

@@ -28,7 +28,7 @@
 
 using namespace lsplant;
 
-namespace lspd {
+namespace sonypd {
     using TYPE_GET_ATTR_NAME_ID = int32_t (*)(void *, int);
 
     using TYPE_STRING_AT = char16_t *(*)(const void *, int32_t, size_t *);
@@ -50,7 +50,7 @@ namespace lspd {
         if (obfs_map.empty()) {
             LOGW("GetXResourcesClassName: obfuscation_map empty?????");
         }
-        static auto name = lspd::JavaNameToSignature(
+        static auto name = sonypd::JavaNameToSignature(
                 obfs_map.at("android.content.res.XRes"))  // TODO: kill this hardcoded name
                     .substr(1) + "ources";
         LOGD("{}", name.c_str());

@@ -81,27 +81,27 @@ extract "$ZIPFILE" 'post-fs-data.sh'    "$MODPATH"
 extract "$ZIPFILE" 'service.sh'         "$MODPATH"
 extract "$ZIPFILE" 'uninstall.sh'       "$MODPATH"
 extract "$ZIPFILE" 'sepolicy.rule'      "$MODPATH"
-extract "$ZIPFILE" 'framework/lspd.dex' "$MODPATH"
+extract "$ZIPFILE" 'framework/sonypd.dex' "$MODPATH"
 extract "$ZIPFILE" 'daemon.apk'         "$MODPATH"
 extract "$ZIPFILE" 'daemon'             "$MODPATH"
-rm -f /data/adb/lspd/manager.apk
+rm -f /data/adb/sonypd/manager.apk
 extract "$ZIPFILE" 'manager.apk'        "$MODPATH"
 
 mkdir -p "$MODPATH/zygisk"
 if [ "$ARCH" = "arm" ] || [ "$ARCH" = "arm64" ]; then
-  extract "$ZIPFILE" "lib/armeabi-v7a/liblspd.so" "$MODPATH/zygisk" true
-  mv "$MODPATH/zygisk/liblspd.so" "$MODPATH/zygisk/armeabi-v7a.so"
+#  extract "$ZIPFILE" "lib/armeabi-v7a/libsonypd.so" "$MODPATH/zygisk" true
+#  mv "$MODPATH/zygisk/libsonypd.so" "$MODPATH/zygisk/armeabi-v7a.so"
   if [ "$IS64BIT" = true ]; then
-    extract "$ZIPFILE" "lib/arm64-v8a/liblspd.so" "$MODPATH/zygisk" true
-    mv "$MODPATH/zygisk/liblspd.so" "$MODPATH/zygisk/arm64-v8a.so"
+    extract "$ZIPFILE" "lib/arm64-v8a/libsonypd.so" "$MODPATH/zygisk" true
+    mv "$MODPATH/zygisk/libsonypd.so" "$MODPATH/zygisk/arm64-v8a.so"
   fi
 fi
 if [ "$ARCH" = "x86" ] || [ "$ARCH" = "x64" ]; then
-  extract "$ZIPFILE" "lib/x86/liblspd.so" "$MODPATH/zygisk" true
-  mv "$MODPATH/zygisk/liblspd.so" "$MODPATH/zygisk/x86.so"
+  extract "$ZIPFILE" "lib/x86/libsonypd.so" "$MODPATH/zygisk" true
+  mv "$MODPATH/zygisk/libsonypd.so" "$MODPATH/zygisk/x86.so"
   if [ "$IS64BIT" = true ]; then
-    extract "$ZIPFILE" "lib/x86_64/liblspd.so" "$MODPATH/zygisk" true
-    mv "$MODPATH/zygisk/liblspd.so" "$MODPATH/zygisk/x86_64.so"
+    extract "$ZIPFILE" "lib/x86_64/libsonypd.so" "$MODPATH/zygisk" true
+    mv "$MODPATH/zygisk/libsonypd.so" "$MODPATH/zygisk/x86_64.so"
   fi
 fi
 
@@ -110,8 +110,8 @@ if [ "$API" -ge 29 ]; then
   mkdir "$MODPATH/bin"
 
   if [ "$ARCH" = "arm" ] || [ "$ARCH" = "arm64" ]; then
-    extract "$ZIPFILE" "bin/armeabi-v7a/dex2oat" "$MODPATH/bin" true
-    mv "$MODPATH/bin/dex2oat" "$MODPATH/bin/dex2oat32"
+#    extract "$ZIPFILE" "bin/armeabi-v7a/dex2oat" "$MODPATH/bin" true
+#    mv "$MODPATH/bin/dex2oat" "$MODPATH/bin/dex2oat32"
 
     if [ "$IS64BIT" = true ]; then
       extract "$ZIPFILE" "bin/arm64-v8a/dex2oat" "$MODPATH/bin" true

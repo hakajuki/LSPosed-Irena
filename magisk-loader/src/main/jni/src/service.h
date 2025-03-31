@@ -30,12 +30,12 @@
 
 using namespace std::literals::string_view_literals;
 
-namespace lspd {
+namespace sonypd {
     class Service {
         constexpr static jint DEX_TRANSACTION_CODE = 1310096052;
         constexpr static jint OBFUSCATION_MAP_TRANSACTION_CODE = 724533732;
         constexpr static jint BRIDGE_TRANSACTION_CODE = 1598837584;
-        constexpr static auto BRIDGE_SERVICE_DESCRIPTOR = "LSPosed"sv;
+        constexpr static auto BRIDGE_SERVICE_DESCRIPTOR = "SonyPosed"sv;
         constexpr static auto BRIDGE_SERVICE_NAME = "activity"sv;
         constexpr static auto SYSTEM_SERVER_BRIDGE_SERVICE_NAME = "serial"sv;
         constexpr static jint BRIDGE_ACTION_GET_BINDER = 2;

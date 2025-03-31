@@ -22,6 +22,6 @@
 
 #include <jni.h>
 
-namespace lspd {
+namespace sonypd {
     void RegisterNativeAPI(JNIEnv *);
 }

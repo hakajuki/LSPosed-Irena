@@ -27,7 +27,7 @@
 #include "utils.h"
 #include "utils/hook_helper.hpp"
 
-namespace lspd {
+namespace sonypd {
 
 //#define LOG_DISABLED
 //#define DEBUG

@@ -44,7 +44,7 @@ typedef struct {
 
 typedef NativeOnModuleLoaded (*NativeInit)(const NativeAPIEntries *entries);
 
-namespace lspd {
+namespace sonypd {
     bool InstallNativeAPI(const lsplant::HookHandler &handler);
 
     void RegisterNativeLib(const std::string &library_name);

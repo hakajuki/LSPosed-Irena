@@ -38,7 +38,7 @@
 
 using namespace lsplant;
 
-namespace lspd {
+namespace sonypd {
     std::unique_ptr<Service> Service::instance_ = std::make_unique<Service>();
 
     uint8_t* access_matrix = nullptr;
@@ -200,7 +200,7 @@ namespace lspd {
 
     std::string GetBridgeServiceName() {
         const auto &obfs_map = ConfigBridge::GetInstance()->obfuscation_map();
-        static auto signature = obfs_map.at("org.lsposed.lspd.service.") + "BridgeService";
+        static auto signature = obfs_map.at("org.sonyposed.sonypd.service.") + "BridgeService";
         return signature;
     }
 
@@ -254,9 +254,9 @@ namespace lspd {
             }
         }
 
-        auto &binder = lspd::GetLibBinder(false);
+        auto &binder = sonypd::GetLibBinder(false);
         IPCThreadState::Init(binder.get());
-        lspd::GetLibBinder(true);
+        sonypd::GetLibBinder(true);
 
         JNINativeMethod m[] = {
                 LSP_NATIVE_METHOD(BridgeService, initializeAccessMatrix, "(Landroid/os/SharedMemory;)V")
@@ -407,4 +407,4 @@ namespace lspd {
 
         return ret;
     }
-}  // namespace lspd
+}  // namespace sonypd
